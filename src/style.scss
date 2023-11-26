@@ -1,0 +1,33 @@
+@import 'style-reset.scss';
+
+@font-face {
+    font-family: "Inter";
+    src: url("../src/assets/fonts/Inter-Medium.ttf");
+}
+
+.title {
+    color: #000;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 10px;
+
+    &_big {
+        font-size: 40px;
+    }
+
+    &_medium {
+        font-size: 24px;
+    }
+
+    &_small {
+        font-size: 20px;
+    }
+}
+
+.image {
+    height: 300px;
+    border-radius: 10px;
+    border: 1px solid #000; 
+}

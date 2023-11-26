@@ -1,0 +1,54 @@
+<template>
+    <div class="home">
+        <h2 class="home__title title title_medium">Сервис для генерации изображений "День дня". Доставим вам кринжа.</h2>
+        <router-link to="/generate">
+            <base-button class="home__button" :title="'Сгенерировать изображение'" />
+        </router-link>
+        <router-link to="/collection">
+            <base-button class="home__button" :title="'Коллекция'" :icon="collection" />
+        </router-link>
+        <h3 class="home__decription title title_small">Сегодня:</h3>
+        <img class="home__image image" src="../assets/mock-day-of-day.jpeg"/>
+    </div>
+</template>
+
+<script lang="ts">
+import BaseButton from '../components/base-button.vue';
+import Collection from '../assets/collection.svg';
+
+export default {
+    name: 'Home',
+    components: {
+        BaseButton
+    },
+    setup() {
+        const collection = Collection;
+
+        return {
+            collection
+        }
+    }
+}
+</script>
+
+<style lang="scss">
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 30px 0 30px;
+
+    &__title {
+        max-width: 300px;
+        margin-bottom: 30px;
+    }
+
+    &__button {
+        margin-bottom: 20px;
+    }
+
+    &__description {
+        margin-bottom: 10px;
+    }
+}
+</style>

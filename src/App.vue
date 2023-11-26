@@ -1,30 +1,40 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import BaseButton from './components/base-button.vue';
+import Collection from './assets/collection.svg'
+import Share from './assets/share.svg'
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+    <div class="app">
+        <header class="app__header">
+            <h1 class="app__title title title_big">День дня</h1>
+        </header>
+        <main>
+            <router-view></router-view>
+        </main>
+        <footer class="app__footer">
+            <base-button :title="'Поделиться'" :icon="Share"/>
+        </footer>
+    </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style lang="scss">
+@import "style.scss";
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__header {
+        margin-top: 52px;
+    }
+
+    &__footer {
+        z-index: 1000;
+        position: fixed;
+        bottom: 52px;
+    }
 }
 </style>
