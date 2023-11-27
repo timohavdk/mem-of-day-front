@@ -1,8 +1,9 @@
 <script lang = "ts" setup>
 import { computed, defineProps, StyleValue} from 'vue';
 
+const emit = defineEmits(['base-button-click'])
 const props = defineProps({
-    title: { type: String },
+    title: { type: String, default: ''},
     icon: { type: String, default: ''},
 });
 
@@ -13,10 +14,16 @@ const styles = computed<StyleValue>(() => {
 
     return { 'background-image': `url(${props.icon})` }
 })
+
+const clickHandler = () => {
+    console.log(24234);
+    
+    emit('base-button-click');
+}
 </script>
     
 <template>
-    <button :class="['base-button', {'base-button_no-image': icon === ''}]">
+    <button @click="clickHandler" :class="['base-button', {'base-button_no-image': icon === ''}, {'base-button_no-title': title === ''}]">
         <span class="base-button__title">{{ title }}</span>
         <span :class="['base-button__icon', {'base-button__icon_no-image': icon === ''}]" :style="styles"></span>
     </button>
@@ -28,21 +35,23 @@ const styles = computed<StyleValue>(() => {
     border-radius: 10px;
     border: 1px solid #000;
     background: #FFF;
-    padding: 12px 45px;
+    padding: 12px 12px;
     display: flex;
     gap: 8px;
     justify-content: center;
     align-items: center;
     transition: .2s;
-    transform: translateX(0);
-    max-width: 211px;
 
     &_no-image {
         gap: 0;
     }
 
+    &_no-title {
+        gap: 0;
+    }
+
     &:hover {
-        transform: translateY(-10px);
+        background: #f1f1f1;
     }
 
     &__title {
@@ -53,6 +62,7 @@ const styles = computed<StyleValue>(() => {
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        max-width: 240px;
     }
 
     &__icon {

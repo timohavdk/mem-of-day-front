@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, onBeforeRouteUpdate } from 'vue-router';
 import Home from '../views/Home.vue';
 import Generate from '../views/Generate.vue';
 import Collection from '../views/Collection.vue';
@@ -24,3 +24,6 @@ export const router = createRouter({
     ],
 });
 
+router.afterEach(() => {
+    window.dispatchEvent(new CustomEvent('change-page'));
+})

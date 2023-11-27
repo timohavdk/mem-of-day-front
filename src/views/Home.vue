@@ -2,7 +2,7 @@
     <div class="home">
         <h2 class="home__title title title_medium">Сервис для генерации изображений "День дня". Доставим вам кринжа.</h2>
         <router-link to="/generate">
-            <base-button class="home__button" :title="'Сгенерировать изображение'" />
+            <base-button class="home__button" :title="'Сгенерировать изображение'" :icon="generate" />
         </router-link>
         <router-link to="/collection">
             <base-button class="home__button" :title="'Коллекция'" :icon="collection" />
@@ -15,17 +15,20 @@
 <script lang="ts">
 import BaseButton from '../components/base-button.vue';
 import Collection from '../assets/collection.svg';
+import Generate from '../assets/generate.svg';
 
 export default {
     name: 'Home',
     components: {
-        BaseButton
+        BaseButton,
     },
     setup() {
         const collection = Collection;
+        const generate = Generate;
 
         return {
-            collection
+            collection,
+            generate
         }
     }
 }
@@ -41,6 +44,7 @@ export default {
     &__title {
         max-width: 300px;
         margin-bottom: 30px;
+        text-align: center;
     }
 
     &__button {

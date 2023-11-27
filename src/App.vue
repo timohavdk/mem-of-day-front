@@ -1,7 +1,22 @@
 <script setup>
 import BaseButton from './components/base-button.vue';
-import Collection from './assets/collection.svg'
-import Share from './assets/share.svg'
+import BaseFooter from './components/base-footer.vue';
+import PushNotification from './components/push-notification.vue';
+import Collection from './assets/collection.svg';
+import Share from './assets/share.svg';
+import Home from './assets/home.svg';
+import { ref } from 'vue';
+
+const isMountPushNotification = ref(false);
+
+const showNotificationHandler = () => {
+    console.log('324234');
+    isMountPushNotification.value = true;
+
+    setTimeout(() => {
+        isMountPushNotification.value = false;
+    }, 2000);
+}
 </script>
 
 <template>
@@ -12,9 +27,8 @@ import Share from './assets/share.svg'
         <main>
             <router-view></router-view>
         </main>
-        <footer class="app__footer">
-            <base-button :title="'Поделиться'" :icon="Share"/>
-        </footer>
+        <push-notification :text="'Ссылка скопированна'" :isMount="isMountPushNotification" :visibleTime="2000"/>
+        <base-footer class="app__footer" @showNotification="showNotificationHandler"/>
     </div>
 </template>
 
@@ -29,12 +43,19 @@ import Share from './assets/share.svg'
 
     &__header {
         margin-top: 52px;
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        width: 100%;
+    }
+
+    &__title {
+        text-align: center;
     }
 
     &__footer {
-        z-index: 1000;
         position: fixed;
-        bottom: 52px;
+        bottom: 20px;
     }
 }
 </style>
