@@ -1,8 +1,8 @@
-@import 'style-reset.scss';
+@import 'style-reset';
 
 @font-face {
     font-family: "Inter";
-    src: url("../src/assets/fonts/Inter-Medium.ttf");
+    src: url("../fonts/Inter-Medium.ttf");
 }
 
 .title {
@@ -29,5 +29,5 @@
 .image {
     height: 200px;
     border-radius: 10px;
-    border: 1px solid #000; 
+    border: 1px solid #000;
 }

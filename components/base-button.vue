@@ -1,5 +1,5 @@
 <script lang = "ts" setup>
-import { computed, defineProps, StyleValue} from 'vue';
+import { computed, defineProps} from 'vue';
 
 const emit = defineEmits(['base-button-click'])
 const props = defineProps({
@@ -7,7 +7,7 @@ const props = defineProps({
     icon: { type: String, default: ''},
 });
 
-const styles = computed<StyleValue>(() => {
+const styles = computed(() => {
     if ('' === props.icon) {
         return {};
     }
@@ -16,12 +16,10 @@ const styles = computed<StyleValue>(() => {
 })
 
 const clickHandler = () => {
-    console.log(24234);
-    
     emit('base-button-click');
 }
 </script>
-    
+
 <template>
     <button @click="clickHandler" :class="['base-button', {'base-button_no-image': icon === ''}, {'base-button_no-title': title === ''}]">
         <span class="base-button__title">{{ title }}</span>
